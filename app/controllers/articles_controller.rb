@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def show
     # byebug
-    @article = Article.find(params[:id])
+    article_params
   end
 
   def index
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :description))
+    @article = Article.new(set_article)
     if @article.save
       flash[:notice] = "Article successfully created"
       redirect_to @article
@@ -23,12 +23,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    article_params
   end
 
   def update
-    @article = Article.find(params[:id])
-    if @article.update(params.require(:article).permit(:title, :description))
+    article_params
+    if @article.update(set_article)
       flash[:notice] = "Article edited successfully"
       redirect_to @article
     else
@@ -37,14 +37,23 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    article_params
     if @article.destroy
       flash[:notice] = "Successfully deleted"
     else
       flash[:alert] = "Failed to delete article"
     end
     redirect_to articles_path
+
   end
 
+  private
+  def article_params
+    @article = Article.find(params[:id])
+  end
+
+  def set_article
+    (params.require(:article).permit(:title, :description))
+  end
 end
 

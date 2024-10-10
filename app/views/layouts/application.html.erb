@@ -9,9 +9,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

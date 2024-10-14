@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_14_050335) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_14_062935) do
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|

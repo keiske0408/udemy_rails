@@ -1,37 +1,39 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-10">
-      <%= render 'shared/errors',obj: @user %>
-      <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
-        <div class="form-group row">
-          <%= f.label :username, class: "col-2 col-form-label text-light"%>
-          <div class="col-10">
-            <%= f.text_field :username, class: "form-control shadow rounded",placeholder: "Enter your username"%>
+    <div class="col-md-9 mt-3">
+      <div class="col-10">
+        <%= render 'shared/errors', obj: @user %>
+        <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+          <div class="form-group row">
+            <%= f.label :username, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Enter your username" %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group row pt-3 ">
-          <%= f.label :email, class: "col-2 col-form-label text-light" %>
-          <div class="col-10">
-            <%= f.email_field :email,  class: "form-control shadow rounded", placeholder: "Enter your email address" %>
+          <div class="form-group row pt-3 ">
+            <%= f.label :email, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Enter your email address" %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group row pt-3 ">
-          <%= f.label :password, class: "col-2 col-form-label text-light" %>
-          <div class="col-10">
-            <%= f.password_field :password,  class: "form-control shadow rounded", placeholder: "Enter your password" %>
+          <div class="form-group row pt-3 ">
+            <%= f.label :password, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Enter your password" %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group row justify-content-center pt-3">
-          <%= f.submit(@user.new_record? ? "Sign up" : "Update Account", class: "btn btn-outline-light btn-lg w-50") %>
+          <div class="form-group row justify-content-center pt-3">
+            <%= f.submit(@user.new_record? ? "Sign up" : "Update Account", class: "btn btn-outline-light btn-lg w-50") %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10 text-center ">
+          <%= link_to 'Cancel and return to article listing', articles_path, class: "text-dark" %>
         </div>
-      <% end %>
-    </div >
-    <div class="row justify-content-center">
-      <div class="col-10 text-center ">
-        <%= link_to 'Cancel and return to article listing', articles_path, class: "text-dark" %>
       </div>
     </div>
   </div>
